@@ -1,0 +1,23 @@
+<h1>List</h1>
+<p><%= @list.name %></p>
+  <div class="card-movie">
+    <li>
+    <%  @list.movies.each do |movie|%>
+      <img src="<%= movie.poster_url %>" alt="">
+        <%# <%= "#{movie.title}" "#{movie.overview}" "#{movie.rating}"%>
+        <p><%= "#{movie.title}" %></p>
+        <h4>Overview:</h4> <p><%= "#{movie.overview}" %></p>
+        <h4>Rating:</h4> <p><%= "#{movie.rating}" %></p>
+      <% end %>
+    </li>
+
+    <li>
+      <%  @list.bookmarks.each do |bookmark|%>
+        <li><%= "Reviews:#{bookmark.comment}" %></li>
+          <%= link_to "Delete Bookmark", bookmark_path(bookmark), method: :delete %>
+      <% end %>
+    </li>
+
+
+<%= link_to "Back to List menu", lists_path %>
+<%= link_to "Create new bookmark", new_list_bookmark_path(@list) %>
