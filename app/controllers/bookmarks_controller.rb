@@ -20,8 +20,6 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.find(params[:id])
     if @bookmark.destroy
       redirect_to list_path(@bookmark.list)
-
-    bookmark_path(bookmark)
     else
       render :new
     end
